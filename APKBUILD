@@ -1,7 +1,7 @@
 # Contributor:
 # Maintainer:
 pkgname=razergenie
-pkgver=0.3
+pkgver=0.4
 pkgrel=0
 pkgdesc="Standalone Qt application for configuring Razer devices under GNU/Linux"
 url="https://github.com/z3ntu/RazerGenie"
@@ -11,7 +11,7 @@ depends=""
 makedepends="cmake extra-cmake-modules qt5-qtbase-dev"
 install=""
 #subpackages="$pkgname-dev $pkgname-doc"
-source="${pkgname}-${pkgver}.tar.gz::https://github.com/z3ntu/RazerGenie/archive/v$pkgver.tar.gz"
+source="https://github.com/z3ntu/RazerGenie/releases/download/v$pkgver/RazerGenie-$pkgver.tar.xz"
 builddir="$srcdir/RazerGenie-$pkgver"
 
 build() {
@@ -26,4 +26,4 @@ package() {
 	make DESTDIR="$pkgdir" install
 }
 
-sha512sums="46cd1d8365e4aa90f057fa34e319fcb115ea96255cc42be1fc48e047f63e780ec8ecce3689b6855d41583900139179474240e978fe3af0ceb706f02df15ba39d  razergenie-0.3.tar.gz"
+sha512sums="b8ea90f982ed25231c10c7244615c8e6db97cb36a7740ab02855c0c5efdf22c19f8c770f1d51080f8d5d68ff6c212f290fc213bf393baf60517fe622b8b77cc9  RazerGenie-0.4.tar.xz"
