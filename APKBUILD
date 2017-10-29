@@ -7,22 +7,24 @@ pkgdesc="Standalone Qt application for configuring Razer devices under GNU/Linux
 url="https://github.com/z3ntu/RazerGenie"
 arch="all"
 license="GPL3"
-depends=""
+depends="openrazer-daemon"
 makedepends="cmake extra-cmake-modules qt5-qtbase-dev"
 install=""
-#subpackages="$pkgname-dev $pkgname-doc"
 source="https://github.com/z3ntu/RazerGenie/releases/download/v$pkgver/RazerGenie-$pkgver.tar.xz"
-builddir="$srcdir/RazerGenie-$pkgver"
+builddir="$srcdir/RazerGenie-$pkgver/build"
+
+prepare() {
+    mkdir -p "$builddir"
+}
 
 build() {
 	cd "$builddir"
-	mkdir build && cd build
 	cmake .. -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_BUILD_TYPE=Release -DKDE_INSTALL_LIBDIR=lib
 	make
 }
 
 package() {
-	cd "$builddir/build"
+	cd "$builddir"
 	make DESTDIR="$pkgdir" install
 }
 
